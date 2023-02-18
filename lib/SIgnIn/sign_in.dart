@@ -143,7 +143,7 @@ class _SignInPageState extends State<SignInPage> {
 
                 icon: iconsImage[2],
                 //iconColor: Colors.white,
-                hintText: 'Phone Number....',
+                hintText: 'Email....',
                // hintStyle:TextStyle(color: Colors.white) ,
 
                 border: InputBorder.none
