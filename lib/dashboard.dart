@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yuma_test/utils.dart';
 
 import 'Database/db-handlar.dart';
 import 'Database/model_class.dart';
@@ -36,6 +37,7 @@ class _DashBoardState extends State<DashBoard> {
           ),
           child:FloatingActionButton.extended(
             onPressed:(){
+              Utils().toastMessage('Users info will be appeared in dashboard');
               setState(() {
                 modification=1;
               });

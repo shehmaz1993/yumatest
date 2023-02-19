@@ -30,6 +30,7 @@ class Repository{
    }
   Future  logInUser(String user,String password)async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
+    //post request making
     try {
       Response response = await api.sendRequest.post('/consumer/login',
           data:{
@@ -41,6 +42,7 @@ class Repository{
       if(response.statusCode==200){
         print(response.data);
         var data=response.data;
+        //inserting user information in sqlite
         dbHelper?.insert(
             UserModel(
                 username:prefs.getString('username'),
@@ -54,7 +56,6 @@ class Repository{
         });
 
       }
-
 
     }
     catch (ex) {

@@ -64,7 +64,7 @@ class _SignUpPageState extends State<SignUpPage> {
      }
   }
   String? validateRePassword(String? value) {
-    if (value==passwordController.text)
+    if (value!=passwordController.text)
     {
       return 'Typed password must be same ';
     }
