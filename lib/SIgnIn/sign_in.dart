@@ -138,7 +138,7 @@ class _SignInPageState extends State<SignInPage> {
           child: TextField(
             //style:TextStyle(color: Colors.white)  ,
             controller: userNameController,
-            keyboardType: TextInputType.number,
+            keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(
 
                 icon: iconsImage[2],
