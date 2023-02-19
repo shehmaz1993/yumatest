@@ -51,6 +51,7 @@ class Repository{
             )
         ).then((value){
           print('user added $value');
+          // user is being added
         }).onError((error, stackTrace){
           print(error.toString());
         });
