@@ -54,6 +54,7 @@ class _SignUpPageState extends State<SignUpPage> {
    // dbHelper=DBHelper();
   }
   String? validatePassword(String? value) {
+    //password validation
     if (value!.length < 5)
       {
         return 'Password must be more than 5 charater';
@@ -64,6 +65,7 @@ class _SignUpPageState extends State<SignUpPage> {
      }
   }
   String? validateRePassword(String? value) {
+    //validate repassword
     if (value!=passwordController.text)
     {
       return 'Typed password must be same ';
