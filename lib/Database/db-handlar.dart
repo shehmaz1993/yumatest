@@ -1,4 +1,6 @@
 
+import 'dart:io';
+
 import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';
 import 'dart:io' as io;
@@ -18,10 +20,13 @@ class DBHelper{
   }
 
   initDatabase()async{
-     io.Directory documentDirectory = await getApplicationDocumentsDirectory();
-     String path= join(documentDirectory.path,'users.db');
-     var db=openDatabase(path,version: 1,onCreate: _onCreate);
-     return db;
+   // final dabasesPath = await getDatabasesPath();
+    //print(dabasesPath.toString());
+    Directory documentsDirectory = await getApplicationDocumentsDirectory();
+    print('path is ${documentsDirectory.path.toString()}');
+    String path1= join(documentsDirectory.path,'users.db');
+    var db=openDatabase(path1,version: 1,onCreate: _onCreate);
+    return db;
   }
 
   _onCreate(Database db,int version)async{

@@ -41,7 +41,8 @@ class _DashBoardState extends State<DashBoard> {
               setState(() {
                 modification=1;
               });
-             userList();
+              //dbHelper!.initDatabase();
+
             },
             icon: const Icon(Icons.shopping_basket),
             label: const Text('Check Users'),
@@ -49,6 +50,7 @@ class _DashBoardState extends State<DashBoard> {
           )
       ),
       body: modification==1?userList():Container()
+
 
     );
   }
@@ -61,20 +63,33 @@ class _DashBoardState extends State<DashBoard> {
           future: userlist,
           builder: (context,AsyncSnapshot<List<UserModel>> snapshot){
 
-            return ListView.builder(
-                itemCount: snapshot.data!.length,
-                itemBuilder:(context,index){
-                  return SizedBox(
-                    height: 50,
-                    width: double.infinity,
-                    child: ListTile(
-                      title: Text(snapshot.data![index].username.toString()),
-                      subtitle:Text(snapshot.data![index].consumerUuid.toString()) ,
-                      leading:Text(snapshot.data![index].sessionId.toString()) ,
-                    ),
-                  );
-                }
-            );
+           if(snapshot.hasData){
+             return ListView.builder(
+                 itemCount: snapshot.data!.length,
+                 itemBuilder:(context,index){
+                   return  SizedBox(
+                     height: 100,
+                     width: double.infinity,
+                     child: ListTile(
+                         title: Padding(
+                           padding:  const EdgeInsets.only(left:50.0),
+                           child: Text(snapshot.data![index].username.toString()),
+                         ),
+                         subtitle:Column(
+                           children: [
+                             Text(snapshot.data![index].consumerUuid.toString()) ,
+                             Text(snapshot.data![index].sessionId.toString())
+                           ],
+                         )
+                       //leading:Text(snapshot.data![index].sessionId.toString()) ,
+                     ),
+                   );
+                 }
+             );
+           }
+           else{
+             return const Center(child: CircularProgressIndicator(),);
+           }
           }
       ),
     );
